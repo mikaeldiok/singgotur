@@ -185,9 +185,10 @@ class ReportService{
             $reportObject = new Report;
             $reportObject->fill($data);
 
+            $reportObject->ip_address = request()->ip();
+            $reportObject->user_agent = request()->header('User-Agent');
+            
             $reportObjectArray = $reportObject->toArray();
-            $reportObjectArray->ip_address = request()->ip();
-            $reportObjectArray->user_agent = request()->header('User-Agent');
 
             $report = Report::create($reportObjectArray);
 
