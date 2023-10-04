@@ -65,9 +65,9 @@ class PermissionRoleTableSeeder extends Seeder
         echo "\n _Students_ Permissions Created.";
 
         \Artisan::call('auth:permission', [
-            'name' => 'mkdums',
+            'name' => 'reports',
         ]);
-        echo "\n _Mkdums_ Permissions Created.";
+        echo "\n _Reports_ Permissions Created.";
 
 
         echo "\n\n";

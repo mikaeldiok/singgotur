@@ -117,7 +117,7 @@ return [
             'views'         => ['path' => 'Resources/views', 'generate' => true],
             'test'          => ['path' => 'Tests/Unit', 'generate' => true],
             'test-feature'  => ['path' => 'Tests/Feature', 'generate' => true],
-            'repositories'  => ['path' => 'Repositories', 'generate' => true],
+            'repositories'  => ['path' => 'Repositories', 'generate' => false],
             'contracts'     => ['path' => 'Repositories/Contracts', 'generate' => true],
             'services'      => ['path' => 'Services', 'generate' => true],
             'event'         => ['path' => 'Events', 'generate' => true],

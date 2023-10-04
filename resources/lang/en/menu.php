@@ -2,13 +2,6 @@
 
 return [
     'dashboard'             => 'Dashboard',
-    'registrants'           => 'Registrants',
-    'message_trackers'      => 'Message Trackers',
-
-    'finance' => [
-        'title'             => 'Finance',
-        'installments'      => 'Installments',
-    ],
 
     'core' => [
         'title'             => 'Core Data',
@@ -21,6 +14,11 @@ return [
     'school' => [
         'title'             => 'School',
         'students'          => 'Students',
+    ],
+    
+    'reporting' => [
+        'title'             => 'Reports',
+        'reports'           => 'Reports',
     ],
     
 

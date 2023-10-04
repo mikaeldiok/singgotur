@@ -4,17 +4,17 @@
 
 @section('content')
 
-<div class="main-content bg-sunset">
+<div class="main-content bg-light">
 
     <div class="header py-7 py-lg-8">
         <div class="container">
             <div class="header-body text-center mb-6">
                 <div class="row justify-content-center">
                     <div class="col-xl-5 col-lg-6 col-md-8 px-5 py-5">
-                        <h1 class="text-white">
+                        <h1 class="text-dark">
                             @lang('Register')
                         </h1>
-                        <p class="text-lead text-white">
+                        <p class="text-lead text-dark">
                             @lang("Silakan mengisi data-data anda")
                         </p>
                     </div>

@@ -4,7 +4,7 @@
 
 @section('content')
 
-<div class="main-content bg-sunset">
+<div class="main-content bg-light">
 
 <div class="main-content">
 

@@ -21,9 +21,13 @@ return [
     'school' => [
         'title'             => 'Sekolah',
         'students'          => 'Siswa',
-        'cores'             => 'Data Sekolah',
+        'cores'             => 'Data Inti',
     ],
 
+    'reporting' => [
+        'title'             => 'Laporan',
+        'reports'           => 'Laporan',
+    ],
 
     'blog' => [
         'title'             => 'Blog',

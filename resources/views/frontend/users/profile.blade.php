@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="block-31" style="position: relative;">
-  <div class="background-1 header-bg"></div>
+  <div class="bg-primary header-bg"></div>
 </div>
 
 <section class="section-header text-white pb-7 pb-lg-11">

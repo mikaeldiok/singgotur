@@ -21,12 +21,7 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-
-        $options_data = $options->data;
-
-        $banks = $options_data['banks'];
-
-        return view('auth.register', compact('banks'));
+        return view('auth.register');
     }
 
     /**
