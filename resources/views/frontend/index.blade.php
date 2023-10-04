@@ -29,13 +29,13 @@
           <h2 class="display-4 mb-3">Sampaikan cerita anda</h2>
           <p class="lead">Mulai menyampaikan cerita anda dan ikuti proses kami dalam menanggapi cerita anda</p>
           <p class="mb-4">Untuk melacak proses dibutuhkan akun. Anda akan diminta untuk membuat akun untuk mulai melihat proses cerita anda</p>
-          <p class="mb-0"><a href="#" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
+          <p class="mb-0"><a href="{{route('backend.reports.create')}}" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
         </div>
         <div class="col-md-6 p-4 welcome-text">
           <h2 class="display-4 mb-3">Aduan instan</h2>
           <p class="lead">Anda dapat menyampaikan aduan secara instan dan anonim tanpa login dengan melalui link dibawah ini</p>
           <p class="mb-4"></p>
-          <p class="mb-0"><a href="#" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
+          <p class="mb-0"><a href="{{route('frontend.reports.create')}}" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-right"></i></a></p>
         </div>
       </div>
     </div>

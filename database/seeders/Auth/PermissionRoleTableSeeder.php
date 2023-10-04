@@ -24,8 +24,7 @@ class PermissionRoleTableSeeder extends Seeder
         // Create Roles
         $super_admin = Role::firstOrCreate(['name' => 'super admin']);
         $admin = Role::firstOrCreate(['name' => 'administrator']);
-        $manager = Role::firstOrCreate(['name' => 'manager']);
-        $executive = Role::firstOrCreate(['name' => 'executive']);
+        $executive = Role::firstOrCreate(['name' => 'kepala']);
         $user = Role::firstOrCreate(['name' => 'user']);
 
         // Create Permissions
@@ -74,8 +73,8 @@ class PermissionRoleTableSeeder extends Seeder
 
         // Assign Permissions to Roles
         $admin->givePermissionTo(Permission::all());
-        $manager->givePermissionTo('view_backend');
         $executive->givePermissionTo('view_backend');
+        $user->givePermissionTo('view_backend');
 
         Schema::enableForeignKeyConstraints();
     }

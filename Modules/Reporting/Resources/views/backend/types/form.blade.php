@@ -1,8 +1,8 @@
 <div class="row">
-    <div class="col-lg-12">
+    <div class="col-lg-6">
         <div class="form-group">
             <?php
-            $field_name = 'reporter';
+            $field_name = 'report_number';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = $field_lable;
             $required = "required";
@@ -16,18 +16,13 @@
     <div class="col-lg-6">
         <div class="form-group">
             <?php
-            $field_name = 'reporter_type';
+            $field_name = 'reporter';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = $field_lable;
-            $select_options = [
-                'Orang Tua' => 'Orang Tua',
-                'Murid' => 'Murid',
-                'Other' => 'Other',
-            ];
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
         </div>
     </div>
     <div class="col-lg-6">

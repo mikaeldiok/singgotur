@@ -18,7 +18,7 @@ class AdminHider
     public function handle(Request $request, Closure $next)
     {
         if(Auth::user()->hasRole('user')){
-            return abort(404);
+            // return abort(404);
         }
         return $next($request);
     }

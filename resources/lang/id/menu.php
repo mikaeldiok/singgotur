@@ -27,6 +27,7 @@ return [
     'reporting' => [
         'title'             => 'Laporan',
         'reports'           => 'Laporan',
+        'types'             => 'Kategori',
     ],
 
     'blog' => [

@@ -23,7 +23,7 @@ return [
                 'label' => 'Footer Text', // you know what label it is
                 'rules' => 'required|min:2', // validation rule of laravel
                 'class' => '', // any class for input
-                'value' => '<a href="https://github.com/mikaeldiok/mk-starter">Built with ♥ from Indonesia</a>', // default value if you want
+                'value' => 'SMKN1 Kokap Kulon Progo', // default value if you want
             ],
             [
                 'type'  => 'checkbox', // input fields type

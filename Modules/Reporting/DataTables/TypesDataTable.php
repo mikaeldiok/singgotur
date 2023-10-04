@@ -4,15 +4,15 @@ namespace Modules\Reporting\DataTables;
 
 use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
-use Modules\Reporting\Services\ReportService;
-use Modules\Reporting\Entities\Report;
+use Modules\Reporting\Services\TypeService;
+use Modules\Reporting\Entities\Type;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ReportsDataTable extends DataTable
+class TypesDataTable extends DataTable
 {
     /**
      * Build DataTable class.
@@ -20,11 +20,11 @@ class ReportsDataTable extends DataTable
      * @param mixed $query Results from query() method.
      * @return \Yajra\DataTables\DataTableAbstract
      */
-    public function __construct(ReportService $reportService)
+    public function __construct(TypeService $typeService)
     {
-        $this->module_name = 'reports';
+        $this->module_name = 'types';
 
-        $this->reportService = $reportService;
+        $this->typeService = $typeService;
     }
 
     public function dataTable($query)
@@ -79,13 +79,13 @@ class ReportsDataTable extends DataTable
     /**
      * Get query source of dataTable.
      *
-     * @param \App\Report $model
+     * @param \App\Type $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function query()
     {
         $user = auth()->user();
-        $data = Report::query();
+        $data = Type::query();
 
         return $this->applyScopes($data);
     }
@@ -97,9 +97,9 @@ class ReportsDataTable extends DataTable
      */
     public function html()
     {
-        $created_at = 1;
+        $created_at = 2;
         return $this->builder()
-                ->setTableId('reports-table')
+                ->setTableId('types-table')
                 ->columns($this->getColumns())
                 ->minifiedAjax()
                 ->dom(config('mk-datatables.mk-dom'))
@@ -132,10 +132,10 @@ class ReportsDataTable extends DataTable
                   ->printable(false)
                   ->addClass('text-center'),
             Column::make('id')->hidden(),
-            Column::make('reporter')->title(__("reporting::reports.reporter")),
-            Column::make('reporter_email')->title(__("reporting::reports.reporter_email")),
-            Column::make('title')->title(__("reporting::reports.title")),
-            Column::make('status')->title(__("reporting::reports.status")),
+            Column::make('typeer')->title(__("reporting::types.typeer")),
+            Column::make('typeer_email')->title(__("reporting::types.typeer_email")),
+            Column::make('title')->title(__("reporting::types.title")),
+            Column::make('status')->title(__("reporting::types.status")),
             Column::make('created_at'),
             Column::make('updated_at')->hidden(),
         ];
@@ -148,6 +148,6 @@ class ReportsDataTable extends DataTable
      */
     protected function filename()
     {
-        return 'Reports_' . date('YmdHis');
+        return 'Types_' . date('YmdHis');
     }
 }

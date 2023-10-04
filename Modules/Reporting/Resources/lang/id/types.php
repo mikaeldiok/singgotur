@@ -3,12 +3,10 @@
 return [
 
     'report_number'                => 'Nomor Laporan', 
-    'reporter'                     => 'Nama Pelapor',
-    'reporter_type'                => 'Jenis Pelapor',
-    'reporter_nis'                 => 'NIS',
+    'reporter'                     => 'Pelapor',
     'reporter_email'               => 'Email Pelapor',
     'title'                        => 'Judul',
-    'content'                      => 'Isi Laporan',
+    'content'                      => 'Konten',
     'category'                     => 'Kategori',
     'status'                       => 'Status',
     'is_public'                    => 'Publik?',

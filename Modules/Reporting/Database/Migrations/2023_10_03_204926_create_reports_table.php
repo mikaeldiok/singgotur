@@ -17,6 +17,8 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->string('report_number')->nullable();
             $table->string('reporter')->default('noname');
+            $table->string('reporter_nis')->nullable();
+            $table->string('reporter_type')->default('other');
             $table->string('reporter_email')->nullable();
             $table->string('title');
             $table->text('content');

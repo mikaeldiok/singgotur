@@ -19,6 +19,7 @@ return [
     'reporting' => [
         'title'             => 'Reports',
         'reports'           => 'Reports',
+        'types'             => 'Types',
     ],
     
 

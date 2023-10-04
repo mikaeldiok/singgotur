@@ -21,7 +21,6 @@ class PeriodDatabaseSeeder extends Seeder
         
         Schema::disableForeignKeyConstraints();
 
-        $faker = \Faker\Factory::create();
 
         // Add the master administrator, user id of 1
         $periods = [

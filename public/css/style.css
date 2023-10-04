@@ -384,6 +384,9 @@ h1, h2, h3, h4, h5,
   background: #f1efed !important;
   background: #fafafa !important; }
 
+  .bg-orange-shade {
+    background: #db7304 !important; }
+  
 .ftco-custom-gutters {
   margin-left: -10px;
   margin-right: -10px; }

@@ -21,8 +21,6 @@ class MkstarterCoreDatabaseSeeder extends Seeder
         
         Schema::disableForeignKeyConstraints();
 
-        $faker = \Faker\Factory::create();
-
         // Add the master administrator, user id of 1df
         $mkstartercores = [
             [

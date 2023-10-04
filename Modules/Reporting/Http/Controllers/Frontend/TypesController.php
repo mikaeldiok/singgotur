@@ -9,37 +9,35 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Log;
 use Auth;
-use Flash;
-use Modules\Reporting\Services\ReportService;
-use Modules\Reporting\Http\Requests\Frontend\ReportsRequest;
+use Modules\Reporting\Services\TypeService;
 use Spatie\Activitylog\Models\Activity;
 
-class ReportsController extends Controller
+class TypesController extends Controller
 {
-    protected $reportService;
+    protected $typeService;
 
-    public function __construct(ReportService $reportService)
+    public function __construct(TypeService $typeService)
     {
         // Page Title
-        $this->module_title = trans('menu.reporting.reports');
+        $this->module_title = trans('menu.reporting.types');
 
         // module name
-        $this->module_name = 'reports';
+        $this->module_name = 'types';
 
         // directory path of the module
-        $this->module_path = 'reports';
+        $this->module_path = 'types';
 
         // module icon
         $this->module_icon = 'fas fa-user-tie';
 
         // module model name, path
-        $this->module_model = "Modules\Report\Entities\Report";
+        $this->module_model = "Modules\Type\Entities\Type";
 
-        $this->reportService = $reportService;
+        $this->typeService = $typeService;
     }
 
     /**
-     * Go to report homepage
+     * Go to type homepage
      *
      * @param Request $request
      * @param int     $id
@@ -57,7 +55,7 @@ class ReportsController extends Controller
 
         $module_action = 'Index';
 
-        $reports = $this->reportService->getAllReports()->data;
+        $types = $this->typeService->getAllTypes()->data;
 
         //determine connections
         $connection = config('database.default');
@@ -65,7 +63,7 @@ class ReportsController extends Controller
        
         return view(
             "reporting::frontend.$module_name.index",
-            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports",'driver')
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "types",'driver')
         );
     }
 
@@ -86,7 +84,7 @@ class ReportsController extends Controller
 
         $module_action = 'Create';
 
-        $options = $this->reportService->create()->data;
+        $options = $this->typeService->create()->data;
 
         return view(
             "reporting::frontend.$module_name.create",
@@ -101,7 +99,7 @@ class ReportsController extends Controller
      *
      * @return Response
      */
-    public function store(ReportsRequest $request)
+    public function store(TypesRequest $request)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -112,22 +110,22 @@ class ReportsController extends Controller
 
         $module_action = 'Store';
 
-        $reports = $this->reportService->store($request);
+        $types = $this->typeService->store($request);
 
-        $$module_name_singular = $reports->data;
+        $$module_name_singular = $types->data;
 
-        if(!$reports->error){
-            Flash::success('<i class="fas fa-check"></i> Terima kasih! Laporan anda sudah kami simpan.')->important();
+        if(!$types->error){
+            Flash::success('<i class="fas fa-check"></i> '.label_case($module_name_singular).' Data Added Successfully!')->important();
         }else{
-            Flash::error("<i class='fas fa-times-circle'></i> Terjadi kesalahan. silakan coba beberapa saat lagi'")->important();
+            Flash::error("<i class='fas fa-times-circle'></i> Error When ".$module_action." '".Str::singular($module_title)."'")->important();
         }
 
-        return redirect("$module_name/create");
+        return redirect("admin/$module_name");
     }
 
 
     /**
-     * Go to report catalog
+     * Go to type catalog
      *
      * @param Request $request
      * @param int     $id
@@ -145,10 +143,10 @@ class ReportsController extends Controller
 
         $module_action = 'Index';
 
-        $reports = $this->reportService->getPaginatedReports(20,$request)->data;
+        $types = $this->typeService->getPaginatedTypes(20,$request)->data;
         
         if ($request->ajax()) {
-            return view("reporting::frontend.$module_name.reports-card-loader", ['reports' => $reports])->render();  
+            return view("reporting::frontend.$module_name.types-card-loader", ['types' => $types])->render();  
         }
         
         //determine connections
@@ -157,19 +155,19 @@ class ReportsController extends Controller
        
         return view(
             "reporting::frontend.$module_name.index",
-            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "reports",'driver')
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "types",'driver')
         );
     }
 
     /**
-     * Go to report catalog
+     * Go to type catalog
      *
      * @param Request $request
      * @param int     $id
      *
      * @return Response
      */
-    public function filterReports(Request $request)
+    public function filterTypes(Request $request)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -180,24 +178,24 @@ class ReportsController extends Controller
 
         $module_action = 'Index';
 
-        $reports = $this->reportService->filterReports(20,$request)->data;
+        $types = $this->typeService->filterTypes(20,$request)->data;
         
         if ($request->ajax()) {
-            return view("reporting::frontend.$module_name.reports-card-loader", ['reports' => $reports])->render();  
+            return view("reporting::frontend.$module_name.types-card-loader", ['types' => $types])->render();  
         }
         
     }
 
 
     /**
-     * Show report details
+     * Show type details
      *
      * @param Request $request
      * @param int     $id
      *
      * @return Response
      */
-    public function show($id,$reportId)
+    public function show($id,$typeId)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -208,7 +206,7 @@ class ReportsController extends Controller
 
         $module_action = 'Index';
 
-        $report = $this->reportService->show($id)->data;
+        $type = $this->typeService->show($id)->data;
         
         
         //determine connections
@@ -217,7 +215,7 @@ class ReportsController extends Controller
        
         return view(
             "reporting::frontend.$module_name.show",
-            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "report",'driver')
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "type",'driver')
         );
     }
 }

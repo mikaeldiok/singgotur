@@ -1,9 +1,9 @@
 {
-    "Article": true,
-    "Tag": true,
-    "Comment": true,
+    "Article": false,
+    "Tag": false,
+    "Comment": false,
     "Core": false,
-    "School": true,
+    "School": false,
     "Mkstarter": false,
     "Reporting": true
 }

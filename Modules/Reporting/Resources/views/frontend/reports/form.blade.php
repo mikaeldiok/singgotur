@@ -4,21 +4,23 @@
             <?php
             $field_name = 'reporter';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
+            $field_placeholder = '';
+            $required = "";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
+            <small>Dapat dikosongkan bila tidak ingin mengisi nama.</small>
         </div>
     </div>
 </div>
 <div class="row">
-    <div class="col-lg-6">
+    
+<div class="col-lg-6">
         <div class="form-group">
             <?php
             $field_name = 'reporter_type';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = '--Silakan pilih--';
             $select_options = [
                 'Orang Tua' => 'Orang Tua',
                 'Murid' => 'Murid',
@@ -27,7 +29,7 @@
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
+            {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control')->attributes(["$required"]) }}
         </div>
     </div>
     <div class="col-lg-6">
@@ -35,11 +37,12 @@
             <?php
             $field_name = 'reporter_email';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
+            $field_placeholder = '';
+            $required = "";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
+            <small>Dapat dikosongkan bila tidak memiliki email.</small>
         </div>
     </div>
 </div>
@@ -49,7 +52,7 @@
             <?php
             $field_name = 'title';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = '';
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
@@ -63,11 +66,11 @@
             <?php
             $field_name = 'content';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = 'silakan isi detail dengan selengkap-lengkapnya';
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
+            {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image','rows'=>4]) }}
         </div>
     </div>
 </div>
@@ -77,19 +80,7 @@
             <?php
             $field_name = 'category';
             $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php
-            $field_name = 'status';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
+            $field_placeholder = '';
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
