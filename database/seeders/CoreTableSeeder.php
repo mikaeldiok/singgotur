@@ -23,6 +23,7 @@ class CoreTableSeeder extends Seeder
         app()['cache']->forget('spatie.core.cache');
 
         $this->call(SchoolCoreDatabaseSeeder::class);
+        $this->call(CategoryDatabaseSeeder::class);
 
         Schema::enableForeignKeyConstraints();
     }
