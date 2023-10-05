@@ -343,7 +343,7 @@ class TypeService{
         return (object) array(
             'error'=> false,            
             'message'=> '',
-            'data'=> Type::bookingonlyTrashed()->get(),
+            'data'=> Type::onlyTrashed()->get(),
         );
     }
 

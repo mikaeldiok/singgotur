@@ -354,7 +354,7 @@ class ReportService{
         return (object) array(
             'error'=> false,            
             'message'=> '',
-            'data'=> Report::bookingonlyTrashed()->get(),
+            'data'=> Report::onlyTrashed()->get(),
         );
     }
 

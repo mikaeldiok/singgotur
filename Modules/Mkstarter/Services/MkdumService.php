@@ -297,7 +297,7 @@ class MkdumService{
         return (object) array(
             'error'=> false,            
             'message'=> '',
-            'data'=> Mkdum::bookingonlyTrashed()->get(),
+            'data'=> Mkdum::onlyTrashed()->get(),
         );
     }
 

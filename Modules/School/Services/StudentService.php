@@ -382,7 +382,7 @@ class StudentService{
         return (object) array(
             'error'=> false,            
             'message'=> '',
-            'data'=> Student::bookingonlyTrashed()->get(),
+            'data'=> Student::onlyTrashed()->get(),
         );
     }
 
