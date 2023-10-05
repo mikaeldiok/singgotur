@@ -34,7 +34,7 @@ class ReportsDataTable extends DataTable
             ->addColumn('action', function ($data) {
                 $module_name = $this->module_name;
 
-                return view('backend.includes.action_column', compact('module_name', 'data'));
+                return view('backend.includes.action_column_report', compact('module_name', 'data'));
             })
             ->editColumn('available', function ($data) {
                 $module_name = $this->module_name;
