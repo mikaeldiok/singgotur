@@ -50,9 +50,12 @@ class ReportsDataTable extends DataTable
             })
             ->editColumn('category', function ($data) {
                 $module_name = $this->module_name;
+                if(isset($data->type)){
 
-                $cateogry_name = $data->type->name;
-
+                    $cateogry_name = $data->type->name;
+                }else{
+                    $cateogry_name = "uncategorized";
+                }
                 return $cateogry_name;
             })
             ->editColumn('photo', function ($data) {
