@@ -3,7 +3,7 @@
 namespace Modules\Reporting\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Reporting\Entities\Core;
+use Modules\Reporting\Entities\Type;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon as Carbon;
