@@ -12,91 +12,44 @@
 @endsection
 
 @section('content')
-<?php
-    //Total Donations
-    $total = 0;
-    foreach($$module_name_singular->donations as $donation){
-        $total += $donation->amount;
-    }
-?>
 <div class="card">
     <div class="card-body">
         <div class="row">
             <div class="col-8">
                 <h4 class="card-title mb-0">
-                    <i class="{{ $module_icon }}"></i> {{ $module_title }} <small class="text-muted">{{ __($module_action) }}</small>
+                    <i class="{{ $module_icon }}"></i>  {{ $module_title }} <small class="text-muted">{{ __($module_action) }}</small>
                 </h4>
                 <div class="small text-muted">
                     @lang(":module_name Management Dashboard", ['module_name'=>Str::title($module_name)])
                 </div>
             </div>
             <!--/.col-->
-            <div class="col-4">
-                <div class="float-right">
-                    <a href="{{ route("backend.$module_name.index") }}" class="btn btn-secondary mt-1 btn-sm" data-toggle="tooltip" title="{{ ucwords($module_name) }} List"><i class="fas fa-list"></i> List</a>
-                    @can('edit_'.$module_name)
-                    <a href="{{ route("backend.$module_name.edit", $$module_name_singular) }}" class="btn btn-primary mt-1 btn-sm" data-toggle="tooltip" title="Edit {{ Str::singular($module_name) }} "><i class="fas fa-wrench"></i> Edit</a>
-                    @endcan
-                </div>
-            </div>
-            <!--/.col-->
         </div>
         <!--/.row-->
 
+        <hr>
 
-        <!-- Tab panes -->
+        <div class="row mt-4">
+            <div class="col">
+                {{ html()->modelForm($$module_name_singular, 'PATCH', route("backend.$module_name.update", $$module_name_singular))->class('form')->attributes(['enctype'=>"multipart/form-data"])->open() }}
 
-        <div class="mt-4">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="donasi-tab" data-toggle="tab" href="#donasi" role="tab" aria-controls="donasi" aria-selected="true">Donasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="detail-tab" data-toggle="tab" href="#detail" role="tab" aria-controls="detail" aria-selected="false">Detail</a>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="donasi" role="tabpanel" aria-labelledby="donasi-tab">
-                    <h4 class="text-primary text-center my-4">Riwayat Donasi</h4>
-                    
-                    <tr>
-                        <td>
-                            <strong>Total Donasi</strong>  
-                        </td>
-                        <td> 
-                            <h4>Rp. {{number_format($total, 2, ',', '.')}}</h4>                         
-                        </td>
-                    </tr>
+                @include ("reporting::backend.$module_name.form-show")
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            {{ html()->submit($text = icon('fas fa-save')." Save")->class('btn btn-success') }}
+                        </div>
+                    </div>
 
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th scope="col">Tanggal</th>
-                                <th scope="col">Nominal</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($$module_name_singular->donations as $donation)
-                                <tr>
-                                    <td>
-                                    {{$donation->donation_date}}    
-                                    </td>
-                                    <td> 
-                                        Rp. {{number_format($donation->amount, 2, ',', '.')}}                              
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table> 
+                    <div class="col-8">
+                        <div class="float-right">
+                            <a href="{{ route("backend.$module_name.index") }}" class="btn btn-warning" data-toggle="tooltip" title="{{__('labels.backend.cancel')}}"><i class="fas fa-reply"></i> Cancel</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="tab-pane fade" id="detail" role="tabpanel" aria-labelledby="detail-tab">
-                    <hr>
-                    @include('backend.includes.show')
 
-                    <hr>
-                        @include('reporting::backend.includes.activitylog')
-                    <hr>
-                </div>
+                {{ html()->form()->close() }}
+
             </div>
         </div>
     </div>
@@ -114,3 +67,9 @@
 </div>
 
 @stop
+
+@push ('after-scripts')
+
+@include('backend.includes.ajax-delete-swal')
+
+@endpush

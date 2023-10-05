@@ -81,26 +81,22 @@
                             <div class="form-group">
                                 <div class="input-group input-group-merge input-group-alternative mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fas fa-building"></i></span>
+                                        <span class="input-group-text"><i class="fas fa-users"></i></span>
                                     </div>
-                                    <input type="text" class="form-control" id="corporation_name" name="corporation_name" value="{{ old('corporation_name') }}" placeholder="{{ __('Nama Perusahaan') }}" aria-label="first_name" aria-describedby="first_name" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <div class="input-group input-group-merge input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa-solid fa-phone"></i></span>
-                                    </div>
-                                    <input type="text" class="form-control" id="corporation_phone" name="corporation_phone" value="{{ old('corporation_phone') }}" placeholder="{{ __('Nomor Telepon (Perusahaan)') }}" aria-label="corporation_phone" aria-describedby="corporation_phone">
-                                </div>
-                            </div>
+                                    <?php
+                                    $field_name = 'reporter_type';
+                                    $field_lable = "Jenis User Pelapor";
+                                    $field_placeholder = '--pilih jenis pelapor--';
+                                    $required = "required";
+                                    $select_options = [
+                                        'Orang Tua' => 'Orang Tua',
+                                        'Murid' => 'Murid',
+                                        'Other' => 'Other',
+                                    ];
+                                    $required = "required";
+                                    ?>
 
-                            <div class="form-group">
-                                <div class="input-group input-group-merge input-group-alternative mb-3">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa-solid fa-house"></i></span>
-                                    </div>
-                                    <textarea form="register" class="form-control" id="corporation_address" name="corporation_address" value="{{ old('corporation_address') }}" placeholder="{{ __('Alamat Perusahaan') }}" aria-label="corporation_address" aria-describedby="corporation_address" required></textarea>
+                                    {{ html()->select($field_name, $select_options)->placeholder($field_placeholder)->class('form-control select2')->attributes(["$required"]) }}
                                 </div>
                             </div>
                             <hr>

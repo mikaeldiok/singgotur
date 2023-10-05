@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Reporting\DataTables;
+namespace Modules\Reporting\DataTables\Users;
 
 use Carbon\Carbon;
 use Illuminate\Support\HtmlString;
@@ -12,7 +12,7 @@ use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
-class ReportsDataTable extends DataTable
+class ReportsDataTableUsers extends DataTable
 {
     /**
      * Build DataTable class.
@@ -36,6 +36,13 @@ class ReportsDataTable extends DataTable
 
                 return view('backend.includes.action_column', compact('module_name', 'data'));
             })
+            ->editColumn('category', function ($data) {
+                $module_name = $this->module_name;
+
+                $cateogry_name = $data->type->name;
+
+                return $cateogry_name;
+            })
             ->editColumn('available', function ($data) {
                 $module_name = $this->module_name;
 
@@ -47,13 +54,6 @@ class ReportsDataTable extends DataTable
                 }
 
                 return $availability;
-            })
-            ->editColumn('category', function ($data) {
-                $module_name = $this->module_name;
-
-                $cateogry_name = $data->type->name;
-
-                return $cateogry_name;
             })
             ->editColumn('photo', function ($data) {
                 $module_name = $this->module_name;
@@ -92,7 +92,7 @@ class ReportsDataTable extends DataTable
     public function query()
     {
         $user = auth()->user();
-        $data = Report::query();
+        $data = Report::where('created_by','=',$user->id);
 
         return $this->applyScopes($data);
     }
@@ -112,9 +112,6 @@ class ReportsDataTable extends DataTable
                 ->dom(config('mk-datatables.mk-dom'))
                 ->orderBy($created_at,'desc')
                 ->buttons(
-                    Button::make('export'),
-                    Button::make('print'),
-                    Button::make('reset')->className('rounded-right'),
                     Button::make('colvis')->text('Kolom')->className('m-2 rounded btn-info'),
                 )->parameters([
                     'paging' => true,
@@ -140,13 +137,12 @@ class ReportsDataTable extends DataTable
                   ->addClass('text-center'),
             Column::make('id')->hidden(),
             Column::make('reporter')->title(__("reporting::reports.reporter")),
-            Column::make('reporter_type')->title(__("reporting::reports.reporter_type")),
+            Column::make('reporter_type')->title(__("reporting::reports.reporter_type"))->hidden(),
             Column::make('category')->title(__("reporting::reports.category")),
-            Column::make('reporter_email')->title(__("reporting::reports.reporter_email")),
+            Column::make('reporter_email')->title(__("reporting::reports.reporter_email"))->hidden(),
             Column::make('title')->title(__("reporting::reports.title")),
             Column::make('status')->title(__("reporting::reports.status")),
             Column::make('created_at'),
-            Column::make('updated_at')->hidden(),
         ];
     }
 

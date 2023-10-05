@@ -27,7 +27,7 @@ class Type extends UserModel implements HasMedia
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = "types";
+    protected $table = "report_types";
 
     protected static $logName = 'types';
     protected static $logOnlyDirty = true;

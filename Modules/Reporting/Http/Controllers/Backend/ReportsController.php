@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
 use Log;
 use Modules\Reporting\Services\ReportService;
 use Modules\Reporting\DataTables\ReportsDataTable;
+use Modules\Reporting\DataTables\Users\ReportsDataTableUsers;
 use Modules\Reporting\Http\Requests\Backend\ReportsRequest;
 use Spatie\Activitylog\Models\Activity;
 use Yajra\DataTables\DataTables;
@@ -48,7 +49,7 @@ class ReportsController extends Controller
      *
      * @return Response
      */
-    public function index(ReportsDataTable $dataTable)
+    public function index(ReportsDataTable $dataTable,ReportsDataTableUsers $dataTableUsers)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -59,11 +60,15 @@ class ReportsController extends Controller
 
         $module_action = 'List';
 
-        $$module_name = $module_model::paginate();
-
-        return $dataTable->render("reporting::backend.$module_path.index",
-            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
-        );
+        if(auth()->user()->hasRole('user')){
+            return $dataTableUsers->render("reporting::backend.$module_path.users.index",
+                compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
+            );
+        }else{
+            return $dataTable->render("reporting::backend.$module_path.index",
+                compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action')
+            );
+        }
     }
 
     /**
@@ -151,7 +156,7 @@ class ReportsController extends Controller
      *
      * @return Response
      */
-    public function show($id)
+    public function showDefault($id)
     {
         $module_title = $this->module_title;
         $module_name = $this->module_name;
@@ -179,6 +184,29 @@ class ReportsController extends Controller
         return view(
             "reporting::backend.$module_name.show",
             compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "$module_name_singular",'activities','driver')
+        );
+    }
+
+    public function show($id)
+    {
+        $module_title = $this->module_title;
+        $module_name = $this->module_name;
+        $module_path = $this->module_path;
+        $module_icon = $this->module_icon;
+        $module_model = $this->module_model;
+        $module_name_singular = Str::singular($module_name);
+
+        $module_action = 'Show';
+
+        $reports = $this->reportService->edit($id);
+
+        $$module_name_singular = $reports->data;
+
+        $options = $this->reportService->prepareOptions();
+        
+        return view(
+            "reporting::backend.$module_name.show",
+            compact('module_title', 'module_name', 'module_icon', 'module_name_singular', 'module_action', "$module_name_singular",'options')
         );
     }
 

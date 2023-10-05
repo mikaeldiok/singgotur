@@ -124,9 +124,9 @@ class Report extends UserModel implements HasMedia
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bookings()
+    public function type()
     {
-        return $this->hasMany('Modules\Recruiter\Entities\Booking');
+        return $this->belongsTo('Modules\Reporting\Entities\Type','category');
     }
 
     public function checkBookedBy($corporationId)

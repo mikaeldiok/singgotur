@@ -68,13 +68,19 @@ class PermissionRoleTableSeeder extends Seeder
         ]);
         echo "\n _Reports_ Permissions Created.";
 
+        \Artisan::call('auth:permission', [
+            'name' => 'types',
+        ]);
+        echo "\n _Types_ Permissions Created.";
+
 
         echo "\n\n";
 
         // Assign Permissions to Roles
         $admin->givePermissionTo(Permission::all());
         $executive->givePermissionTo('view_backend');
-        $user->givePermissionTo('view_backend');
+        
+        $user->givePermissionTo(['view_backend','view_reports','show_reports','create_reports']);
 
         Schema::enableForeignKeyConstraints();
     }

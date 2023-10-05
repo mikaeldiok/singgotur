@@ -34,6 +34,15 @@ return [
                 'class' => '', // any class for input
                 'value' => '1', // default value if you want
             ],
+            [
+                'type'  => 'text', // input fields type
+                'data'  => 'string', // data type, string, int, boolean
+                'name'  => 'report_status', // unique name for field
+                'label' => 'Report Status', // you know what label it is
+                'rules' => 'required|min:2', // validation rule of laravel
+                'class' => '', // any class for input
+                'value' => 'Belum Dibaca,Diproses,Selesai,Dibatalkan', // default value if you want
+            ],
         ],
     ],
     'email' => [

@@ -18,7 +18,9 @@
         <hr>
 
         <!-- Dashboard Content Area -->
-
+        <div class="col-md-6 border rounded-lg border-primary p-4 welcome-text">
+          <p class="mb-0"><a href="{{route('backend.reports.create')}}" class="btn btn-lg btn-success px-3 py-2">Buat Laporan <i class="fas fa-arrow-right"></i></a></p>
+        </div>
         <!-- / Dashboard Content Area -->
 
     </div>

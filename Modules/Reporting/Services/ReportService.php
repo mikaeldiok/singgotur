@@ -3,6 +3,8 @@
 namespace Modules\Reporting\Services;
 
 use Modules\Reporting\Entities\Report;
+use Modules\Reporting\Entities\Type;
+
 
 use Exception;
 use Carbon\Carbon;
@@ -184,6 +186,15 @@ class ReportService{
             
             $reportObject = new Report;
             $reportObject->fill($data);
+
+            if(is_null($reportObject->status)){
+                $status_raw = explode(",",setting('report_status'));
+                $reportObject->status = $status_raw[0];
+            }
+
+            if(is_null($reportObject->reporter)){
+                $reportObject->reporter = "noname";
+            }
 
             $reportObject->ip_address = request()->ip();
             $reportObject->user_agent = request()->header('User-Agent');
@@ -426,29 +437,19 @@ class ReportService{
 
     public static function prepareOptions(){
         $options=[];
-        // $raw_majors = Core::getRawData('major');
-        // $majors = [];
-        // foreach($raw_majors as $key => $value){
-        //     $majors += [$value => $value];
-        // }
+        $category = Type::pluck('name','id');
 
-        // $skills_raw = Core::getRawData('skills');
-        // $skills = [];
-        // foreach($skills_raw as $value){
-        //     $skills += [$value => $value];
-        // }
+        $status_raw = explode(",",setting('report_status'));
 
-        // $certificate_raw= Core::getRawData('certificate');
-        // $certificate = [];
-        // foreach($certificate_raw as $value){
-        //     $certificate += [$value => $value];
-        // }
+        $status = [];
+        foreach($status_raw as $value){
+            $status += [$value => $value];
+        }
 
-        // $options = array(
-        //     'majors'         => $majors,
-        //     'skills'              => $skills,
-        //     'certificate'         => $certificate,
-        // );
+        $options = array(
+            'category'         => $category,
+            'status'           => $status,
+        );
 
         return $options;
     }

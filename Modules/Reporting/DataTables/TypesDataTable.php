@@ -132,10 +132,8 @@ class TypesDataTable extends DataTable
                   ->printable(false)
                   ->addClass('text-center'),
             Column::make('id')->hidden(),
-            Column::make('typeer')->title(__("reporting::types.typeer")),
-            Column::make('typeer_email')->title(__("reporting::types.typeer_email")),
-            Column::make('title')->title(__("reporting::types.title")),
-            Column::make('status')->title(__("reporting::types.status")),
+            Column::make('code')->title(__("reporting::types.code")),
+            Column::make('name')->title(__("reporting::types.name")),
             Column::make('created_at'),
             Column::make('updated_at')->hidden(),
         ];

@@ -2,33 +2,25 @@
     <div class="col-lg-6">
         <div class="form-group">
             <?php
-            $field_name = 'report_number';
+            $field_name = 'code';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = $field_lable;
             $required = "required";
+
+            if( $module_action == 'Edit'){
+                $disabled = "disabled";
+            }else{
+                $disabled = "";
+            }
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php
-            $field_name = 'reporter';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
+            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", "$disabled", 'aria-label'=>'Image']) }}
         </div>
     </div>
     <div class="col-lg-6">
         <div class="form-group">
             <?php
-            $field_name = 'reporter_email';
+            $field_name = 'name';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = $field_lable;
             $required = "required";
@@ -42,53 +34,13 @@
     <div class="col-lg-12">
         <div class="form-group">
             <?php
-            $field_name = 'title';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-12">
-        <div class="form-group">
-            <?php
-            $field_name = 'content';
+            $field_name = 'description';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = $field_lable;
             $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
             {{ html()->textarea($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php
-            $field_name = 'category';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-        </div>
-    </div>
-    <div class="col-lg-6">
-        <div class="form-group">
-            <?php
-            $field_name = 'status';
-            $field_lable = __("reporting::$module_name.$field_name");
-            $field_placeholder = $field_lable;
-            $required = "required";
-            ?>
-            {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
-            {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
         </div>
     </div>
 </div>
