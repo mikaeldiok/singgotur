@@ -2,6 +2,7 @@
 namespace Database\Seeders;
 
 use Modules\School\Database\Seeders\SchoolCoreDatabaseSeeder;
+use Modules\Reporting\Database\Seeders\CategoryDatabaseSeeder;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Schema;
 

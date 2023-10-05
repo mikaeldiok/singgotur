@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon as Carbon;
 
-class ReportingCoreDatabaseSeeder extends Seeder
+class CategoryDatabaseSeeder extends Seeder
 {
     /**
      * Run the database seeds.
