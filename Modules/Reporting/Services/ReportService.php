@@ -363,7 +363,7 @@ class ReportService{
         DB::beginTransaction();
 
         try{
-            $restoring =  Report::bookingwithTrashed()->where('id',$id)->restore();
+            $restoring =  Report::withTrashed()->where('id',$id)->restore();
             $reports = Report::findOrFail($id);
         }catch (Exception $e){
             DB::rollBack();
@@ -390,7 +390,7 @@ class ReportService{
         DB::beginTransaction();
 
         try{
-            $reports = Report::bookingwithTrashed()->findOrFail($id);
+            $reports = Report::withTrashed()->findOrFail($id);
     
             $deleted = $reports->forceDelete();
         }catch (Exception $e){

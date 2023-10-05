@@ -352,7 +352,7 @@ class TypeService{
         DB::beginTransaction();
 
         try{
-            $restoring =  Type::bookingwithTrashed()->where('id',$id)->restore();
+            $restoring =  Type::withTrashed()->where('id',$id)->restore();
             $types = Type::findOrFail($id);
         }catch (Exception $e){
             DB::rollBack();
@@ -379,7 +379,7 @@ class TypeService{
         DB::beginTransaction();
 
         try{
-            $types = Type::bookingwithTrashed()->findOrFail($id);
+            $types = Type::withTrashed()->findOrFail($id);
     
             $deleted = $types->forceDelete();
         }catch (Exception $e){

@@ -391,7 +391,7 @@ class StudentService{
         DB::beginTransaction();
 
         try{
-            $restoring =  Student::bookingwithTrashed()->where('id',$id)->restore();
+            $restoring =  Student::withTrashed()->where('id',$id)->restore();
             $students = Student::findOrFail($id);
         }catch (Exception $e){
             DB::rollBack();
@@ -418,7 +418,7 @@ class StudentService{
         DB::beginTransaction();
 
         try{
-            $students = Student::bookingwithTrashed()->findOrFail($id);
+            $students = Student::withTrashed()->findOrFail($id);
     
             $deleted = $students->forceDelete();
         }catch (Exception $e){

@@ -306,7 +306,7 @@ class MkdumService{
         DB::beginTransaction();
 
         try{
-            $restoring =  Mkdum::bookingwithTrashed()->where('id',$id)->restore();
+            $restoring =  Mkdum::withTrashed()->where('id',$id)->restore();
             $mkdums = Mkdum::findOrFail($id);
         }catch (Exception $e){
             DB::rollBack();
@@ -333,7 +333,7 @@ class MkdumService{
         DB::beginTransaction();
 
         try{
-            $mkdums = Mkdum::bookingwithTrashed()->findOrFail($id);
+            $mkdums = Mkdum::withTrashed()->findOrFail($id);
     
             $deleted = $mkdums->forceDelete();
         }catch (Exception $e){
