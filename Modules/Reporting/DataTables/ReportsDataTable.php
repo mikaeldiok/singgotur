@@ -58,6 +58,25 @@ class ReportsDataTable extends DataTable
                 }
                 return $cateogry_name;
             })
+            ->editColumn('status', function ($data) {
+
+                $text_modification = "";
+                $the_status = $data->status;
+
+                switch($the_status){
+                    case 'Belum Dibaca':
+                        $text_modification = "text-danger";       
+                        break;
+                    case 'Diproses':    
+                        $text_modification = "text-warning";
+                        break;
+                    case 'Selesai':    
+                        $text_modification = "text-success";
+                        break;
+                }
+
+                return "<span class=".$text_modification.">".$the_status."</span>";
+            })
             ->editColumn('photo', function ($data) {
                 $module_name = $this->module_name;
 
@@ -83,7 +102,7 @@ class ReportsDataTable extends DataTable
 
                 return $formated_date;
             })
-            ->rawColumns(['name', 'action','photo','available']);
+            ->rawColumns(['name', 'status','action','photo','available']);
     }
 
     /**

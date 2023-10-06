@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use Modules\Reporting\Entities\Report;
+use Carbon\Carbon;
 
 class BackendController extends Controller
 {
@@ -13,6 +15,14 @@ class BackendController extends Controller
      */
     public function index()
     {
-        return view('backend.index');
+
+        $today = Carbon::today(); // Get the current date (today)
+
+        $open_reports_count = Report::where('status',"!=","Selesai")->count();
+        $today_reports_count = Report::whereDate('created_at', $today)->count();
+
+        return view('backend.index',
+            compact('today_reports_count','open_reports_count')
+        );
     }
 }
