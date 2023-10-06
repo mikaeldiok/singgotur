@@ -5,11 +5,10 @@
             $field_name = 'reporter';
             $field_lable = __("reporting::$module_name.$field_name");
             $field_placeholder = '';
-            $required = "";
+            $required = "required";
             ?>
             {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
             {{ html()->text($field_name)->placeholder($field_placeholder)->class('form-control')->attributes(["$required", 'aria-label'=>'Image']) }}
-            <small>Dapat dikosongkan bila tidak ingin mengisi nama.</small>
         </div>
     </div>
 </div>
