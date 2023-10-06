@@ -10,7 +10,7 @@
         <div class="container">
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-9">
-              <h1 class="heading mb-4">SISTEM NGGO MATUR</h1>
+              <h1 class="heading mb-4" style="font-family:Rockwell;font-weight: bold;">Si NggoTur</h1>
               <h5 class="mb-5 text-light">Sistem informasi untuk menyampaikan aspirasi dan masukan dari segenap civitas SMKN1 Kokap</h5>
               <p class="mb-0"><a href="#get-started" id="start" class="btn btn-lg btn-theme px-3 py-2">Mulai <i class="fas fa-arrow-down"></i></a></p>
                 <!-- <p style="display: inline-block;" class="text-warning"><a href="https://vimeo.com/channels/staffpicks/93951774"  data-fancybox class="ftco-play-video d-flex text-warning"><span class="play-icon-wrap align-self-center mr-4"><span class="ion-ios-play"></span></span> <span class="align-self-center">Watch Video</span></a></p> -->
