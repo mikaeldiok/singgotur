@@ -57,10 +57,10 @@ class UserTableSeeder extends Seeder
                 'updated_at'        => Carbon::now(),
             ],
             [
-                'first_name'        => 'Manager',
+                'first_name'        => 'kepala',
                 'last_name'         => 'User User',
-                'name'              => 'Manager',
-                'email'             => 'manager@manager.com',
+                'name'              => 'kepala',
+                'email'             => 'kepala@smkn1kokap.sch.id',
                 'password'          => Hash::make('secret'),
                 'username'          => '100003',
                 'mobile'            => '123',
