@@ -13,6 +13,20 @@
     </div>
 </div>
 <div class="row">
+    <?php
+    $field_name = 'kelas';
+    $field_lable = __("reporting::$module_name.$field_name");
+    $field_placeholder = $field_lable;
+    $required = "";
+    ?>
+    <div class="col-lg-2">
+        {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+    </div>
+    <div class="col-lg-10">
+        : <span class="font-weight-bold">{{$report->$field_name}}</span>
+    </div>
+</div>
+<div class="row">
         <?php
         $field_name = 'reporter_type';
         $field_lable = __("reporting::$module_name.$field_name");
@@ -34,6 +48,34 @@
 <div class="row">
     <?php
     $field_name = 'reporter_email';
+    $field_lable = __("reporting::$module_name.$field_name");
+    $field_placeholder = $field_lable;
+    $required = "";
+    ?>
+    <div class="col-lg-2">
+        {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+    </div>
+    <div class="col-lg-10">
+        : <span class="font-weight-bold">{{$report->$field_name}}</span>
+    </div>
+</div>
+<div class="row">
+    <?php
+    $field_name = 'nomor_hp';
+    $field_lable = __("reporting::$module_name.$field_name");
+    $field_placeholder = $field_lable;
+    $required = "";
+    ?>
+    <div class="col-lg-2">
+        {{ html()->label($field_lable, $field_name) }} {!! fielf_required($required) !!}
+    </div>
+    <div class="col-lg-10">
+        : <span class="font-weight-bold">{{$report->$field_name}}</span>
+    </div>
+</div>
+<div class="row">
+    <?php
+    $field_name = 'alamat';
     $field_lable = __("reporting::$module_name.$field_name");
     $field_placeholder = $field_lable;
     $required = "";

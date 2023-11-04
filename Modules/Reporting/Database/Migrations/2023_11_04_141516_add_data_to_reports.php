@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeChangeCategoryToBigint extends Migration
+class AddDataToReports extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class ChangeChangeCategoryToBigint extends Migration
      */
     public function up()
     {
-        
         Schema::table('reports', function (Blueprint $table) {
-            $table->bigInteger('category')->change();
+            $table->string('nomor_hp')->nullable();
+            $table->string('kelas')->nullable();
+            $table->string('alamat')->nullable();
         });
     }
 
@@ -27,7 +28,9 @@ class ChangeChangeCategoryToBigint extends Migration
     public function down()
     {
         Schema::table('reports', function (Blueprint $table) {
-            $table->string('category')->change();
+            $table->string('nomor_hp');
+            $table->string('kelas');
+            $table->string('alamat');
         });
     }
 }
